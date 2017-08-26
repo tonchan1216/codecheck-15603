@@ -1,6 +1,5 @@
 <?php namespace Codecheck;
 $memo = array();
-echo(run(2,array('test',4)));
 
 function run ($argc, $argv){
 	if ($argc == 2) {
