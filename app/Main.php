@@ -3,7 +3,7 @@ $memo = array();
 
 function run ($argc, $argv){
 	if ($argc == 2) {
-		if (gettype($argv[0] == 'integer' && gettype($argv[1] == 'integer')) {
+		if (gettype($argv[0]) == 'integer' and gettype($argv[1]) == 'integer') {
 	    $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 			$seed = $argv[0];
 			$n = $argv[1];
