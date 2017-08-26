@@ -6,7 +6,7 @@ function run ($argc, $argv){
 	if ($argc == 2) {
     $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 		$seed = $argv[0];
-		$n = int($argv[1]);
+		$n = intval($argv[1]);
 
 		printf("%d", f($n,$seed));
 	} elseif ($argc > 2) {
