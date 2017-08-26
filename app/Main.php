@@ -2,6 +2,7 @@
 $memo = array();
 
 function run ($argc, $argv){
+	print("s",var_dump($argv));
 	if ($argc == 2) {
     $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 		$seed = $argv[0];
