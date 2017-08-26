@@ -10,10 +10,10 @@ function run ($argc, $argv){
 		printf("%d", f($n,$seed));
 	} elseif ($argc > 2) {
 		printf("Too many input");
-		error_reporting(1);
+		exit(1);
 	} else {
 		printf("Please input something more");
-		error_reporting(1);
+		exit(1);
 	}
 }
 
@@ -54,6 +54,6 @@ function askServer($n,$seed){
 		return $hash;
 	} else {
 		printf("Ooops, there is a glitch...");
-		error_reporting(1);
+		exit(1);
 	}
 }
