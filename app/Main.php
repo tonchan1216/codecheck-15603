@@ -24,7 +24,7 @@ function f($n,$seed) {
 	} elseif ($n==2) {
 		return 2;
 	} elseif (n %2 == 0) {
-		return f($n − 1,$seed) + f($n − 2,$seed) + f($n − 3,$seed) + f($n − 4,$seed);
+		return f(($n − 1), $seed) + f(($n − 2), $seed) + f(($n − 3), $seed) + f(($n − 4), $seed);
 	} else {
 		$temp = isset($memo[$n]) ? $memo[$n] : askServer($n,$seed);
 		return $temp;
