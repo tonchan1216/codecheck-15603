@@ -1,5 +1,12 @@
 <?php namespace Codecheck;
-$memo = array();
+$jsonUrl = "memo.json"; //JSONファイルの場所とファイル名を記述
+if(file_exists($jsonUrl)){
+  $json = file_get_contents($jsonUrl);
+  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+  $memo = json_decode($json,true);
+}else {
+  echo "データがありません";
+}
 
 function run ($argc, $argv){
 	if ($argc == 2) {
@@ -7,6 +14,8 @@ function run ($argc, $argv){
 		$n = intval($argv[1]);
 
 		printf("%d", f($n,$seed));
+		$memo_str = json_encode($memo);
+		file_put_contents("memo.json" , $memo_str);
 	} elseif ($argc > 2) {
 		printf("Too many input");
 		exit(1);
@@ -25,7 +34,7 @@ function f($n,$seed) {
 	} elseif (($n %2) == 0) {
 		return f($n - 1, $seed) + f($n - 2, $seed) + f($n - 3, $seed) + f($n - 4, $seed);
 	} else {
-		$temp = isset($memo[$n]) ? $memo[$n] : askServer($n,$seed);
+		$temp = isset($memo[$seed][$n]) ? $memo[$seed][$n] : askServer($n,$seed);
 		return $temp;
 	}
 }
@@ -50,7 +59,7 @@ function askServer($n,$seed){
 		printf("Ooops, Service Unavailable");	
 	} elseif ($http_status == '200') {
 		$hash = intval($result['result']);
-		$memo[$n] = $hash;
+		$memo[$seed][$n] = $hash;
 		return $hash;
 	} else {
 		printf("Ooops, there is a glitch...");
