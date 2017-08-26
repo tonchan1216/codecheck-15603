@@ -2,14 +2,17 @@
 $memo = array();
 
 function run ($argc, $argv){
-	if (count($argv) == 2) { 
-    // printf("argv[%s]: %s\n", $index, $value);
-    $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
-		$seed = $argv[0];
-		$n = $argv[1];
+	if ($argc == 2) {
+		if (gettype($argv[0] == 'integer' && gettype($argv[1] == 'integer')) {
+	    $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
+			$seed = $argv[0];
+			$n = $argv[1];
 
-		printf("%s", f($n,$seed));
-	} elseif (count($argv) > 2) {
+			printf("%s", f($n,$seed));
+		} else {
+			print("Please Input 2 integers");
+		}
+	} elseif ($argc > 2) {
 		print("Too many input");
 	} else {
 		print("Please input something more");
