@@ -1,9 +1,9 @@
 <?php namespace Codecheck;
 $memo = array();
+echo(run(2,array('test',4)));
 
 function run ($argc, $argv){
 	if ($argc == 2) {
-    $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 		$seed = $argv[0];
 		$n = intval($argv[1]);
 
@@ -23,8 +23,8 @@ function f($n,$seed) {
 		return 1;
 	} elseif ($n == 2) {
 		return 2;
-	} elseif ((n %2) == 0) {
-		return f(($n − 1), $seed) + f(($n − 2), $seed) + f(($n − 3), $seed) + f(($n − 4), $seed);
+	} elseif (($n %2) == 0) {
+		return f($n - 1, $seed) + f($n - 2, $seed) + f($n - 3, $seed) + f($n - 4, $seed);
 	} else {
 		$temp = isset($memo[$n]) ? $memo[$n] : askServer($n,$seed);
 		return $temp;
@@ -33,6 +33,7 @@ function f($n,$seed) {
 
 function askServer($n,$seed){
 	$curl = curl_init();
+  $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 
 	// curlの設定
 	curl_setopt($curl, CURLOPT_URL, $base_url.'?seed='.$seed.'&n='.$n);
@@ -49,7 +50,7 @@ function askServer($n,$seed){
 	if ($http_status == '503') {
 		printf("Ooops, Service Unavailable");	
 	} elseif ($http_status == '200') {
-		$hash = int($result['hash']);
+		$hash = intval($result['result']);
 		$memo[$n] = $hash;
 		return $hash;
 	} else {
