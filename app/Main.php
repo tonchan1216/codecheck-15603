@@ -10,9 +10,9 @@ function run ($argc, $argv){
 
 		printf("%s", f($n,$seed));
 	} elseif (len($argv) > 2) {
-		print("Too many input")
+		print("Too many input");
 	} else {
-		print("Please input something more")
+		print("Please input something more");
 	}
 }
 
