@@ -18,7 +18,7 @@ function run ($argc, $argv){
 
 //再起関数
 function f($n,$seed) {
-	if $n == 0 {
+	if ($n == 0) {
 		return 1;
 	} elseif ($n==2) {
 		return 2;
