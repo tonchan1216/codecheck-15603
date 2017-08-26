@@ -1,15 +1,18 @@
 <?php namespace Codecheck;
-$jsonUrl = "memo.json"; //JSONファイルの場所とファイル名を記述
-if(file_exists($jsonUrl)){
-  $json = file_get_contents($jsonUrl);
-  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
-  $memo = json_decode($json,true);
-}else {
-  echo "データがありません";
-}
+run(2, array('test',1));
 
 function run ($argc, $argv){
 	if ($argc == 2) {
+		$jsonUrl = "memo.json"; //JSONファイルの場所とファイル名を記述
+		if(file_exists($jsonUrl)){
+		  $json = file_get_contents($jsonUrl);
+		  $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+		  global $memo;
+		  $memo = json_decode($json,true);
+		}else {
+		  echo "データがありません";
+		}
+
 		$seed = $argv[0];
 		$n = intval($argv[1]);
 
