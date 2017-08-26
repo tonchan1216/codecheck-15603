@@ -2,7 +2,6 @@
 $memo = array();
 
 function run ($argc, $argv){
-	printf("%s",var_dump($argv));
 	if ($argc == 2) {
     $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 		$seed = $argv[0];
@@ -25,7 +24,7 @@ function f($n,$seed) {
 	} elseif ($n==2) {
 		return 2;
 	} elseif (n %2 == 0) {
-		return f($n−1,$seed) + f($n−2,$seed) + f($n−3,$seed) + f($n−4,$seed);
+		return f($n − 1,$seed) + f($n − 2,$seed) + f($n − 3,$seed) + f($n − 4,$seed);
 	} else {
 		$temp = isset($memo[$n]) ? $memo[$n] : askServer($n,$seed);
 		return $temp;
