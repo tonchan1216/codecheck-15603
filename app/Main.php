@@ -2,14 +2,14 @@
 $memo = array();
 
 function run ($argc, $argv){
-	if (len($argv) == 2) { 
+	if (count($argv) == 2) { 
     // printf("argv[%s]: %s\n", $index, $value);
     $base_url = 'http://challenge-server.code-check.io/api/recursive/ask';
 		$seed = $argv[0];
 		$n = $argv[1];
 
 		printf("%s", f($n,$seed));
-	} elseif (len($argv) > 2) {
+	} elseif (count($argv) > 2) {
 		print("Too many input");
 	} else {
 		print("Please input something more");
